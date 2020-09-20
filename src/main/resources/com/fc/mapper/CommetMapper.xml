@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fc.mapper.CommentMapper">
+    <select id="selectAnswerCommentCountByAnswerId" resultType="int">
+        select count(*) from answer_comment
+        where answer_id=#{answerId}
+    </select>
+
+    <select id="listQuestionCommentByQuestionId" resultType="com.fc.model.QuestionComment">
+        select question_comment_id,question_comment_content,liked_count,create_time,at_user_id,at_user_name,question_id,user_id
+		from question_comment
+		where question_id = #{questionId}
+    </select>
+
+    <select id="listAnswerCommentByAnswerId" resultType="com.fc.model.AnswerComment">
+        select answer_comment_id, answer_comment_content, liked_count, create_time,at_user_id,at_user_name,answer_id,user_id
+        from answer_comment
+        where answer_id = #{answerId}
+    </select>
+</mapper>
